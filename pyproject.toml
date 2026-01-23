@@ -46,6 +46,9 @@ postgres_copy = ["py.typed"]
 
 [tool.pytest]
 python_files = ["test*.py", "test_*.py", "*_test.py"]
+addopts = ["-p", "no:warnings", "--cov=postgres_copy", "--cov-branch", "-cov-report=term-missing:skip-covered", "--cov-context=test", "--reuse-db", "--nomigrations"]
+testpaths = ["tests"]
+
 
 [tool.flake8]
 max-line-length = 119
@@ -99,12 +102,6 @@ docs = [
     "sphinx-palewire-theme",
     "myst-parser",
 ]
-
-
-[tool.pytest.ini_options]
-addopts = "-p no:warnings --cov=postgres_copy --cov-branch -cov-report=term-missing:skip-covered --cov-context=test --reuse-db --nomigrations"
-testpaths = ["tests"]
-python_files = "test_*.py"
 
 [tool.coverage.run]
 source = ["postgres_copy"]
